@@ -1,4 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { addToStoreReadList } from "../../localDB";
 
 const BookDetails = () => {
   const { bookId } = useParams();
@@ -18,6 +19,10 @@ const BookDetails = () => {
     rating,
     yearOfPublishing,
   } = book;
+
+  const handleMarkRead = (id)=>{
+     addToStoreReadList(id)
+  }
 
   return (
     <div className="card card-side flex justify-between gap-5 shadow-sm my-20 py-20 bg-white text-black">
@@ -66,7 +71,7 @@ const BookDetails = () => {
         </div>
         {/* button */}
         <div className="card-actions justify-start mt-5">
-          <button className="btn bg-white text-black">Read</button>
+          <button onClick={()=>handleMarkRead(bookId)} className="btn bg-white text-black">Mark as Read</button>
           <button className="btn btn-primary">Wishlist</button>
         </div>
       </div>
