@@ -7,14 +7,11 @@ import { getStoredReadList } from "../../localDB";
 import { getStoredWishlist } from "../../localDB";
 import Book from "../Books/Book";
 
-
-
-
 const ListedBooks = () => {
   const allBooks = useLoaderData();
   const [readList, setReadList] = useState([]);
   const [wishList, setWishlist] = useState([]);
-  const [sort, setSort]=useState('')
+  const [sort, setSort] = useState("");
 
   //for readlish
   useEffect(() => {
@@ -38,8 +35,27 @@ const ListedBooks = () => {
     setWishlist(wishList);
   }, []);
 
-//   sort
-const handleSort = sortType => {setSort(sortType)}
+  //   sort
+  const handleSort = (sortType) => {
+    setSort(sortType);
+
+    //
+    if (sortType === "No of Pages") {
+      const sortedReadlist = [...readList].sort(
+        (a, b) => a.totalPages - b.totalPages
+      );
+      setReadList(sortedReadlist);
+    }
+
+    //
+
+    if (sortType === "Ratings") {
+      const sortedReadlist = [...readList].sort(
+        (a, b) => a.rating - b.rating
+      );
+      setReadList(sortedReadlist);
+    }
+  };
 
   return (
     <div>
@@ -49,18 +65,16 @@ const handleSort = sortType => {setSort(sortType)}
 
       <div className="dropdown dropdown-center flex   justify-center">
         <div tabIndex={0} role="button" className="btn -m-10">
-
-          {sort ? `Sort by ${sort}`: 'Sort by'}
-
+          {sort ? `Sort by ${sort}` : "Sort by"}
         </div>
         <ul
           tabIndex={0}
           className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
         >
-          <li onClick={()=>handleSort('Ratings')}>
+          <li onClick={() => handleSort("Ratings")}>
             <a>Ratings</a>
           </li>
-          <li onClick={()=>handleSort('No of Pages')}>
+          <li onClick={() => handleSort("No of Pages")}>
             <a>No. of Pages</a>
           </li>
         </ul>
