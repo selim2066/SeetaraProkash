@@ -5,7 +5,7 @@ const Banner = () => {
     <div className="hero bg-base-200 px-20 py-30">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <img
-          src="../../../public/img/books.jpg"
+          src="/img/sitara prokash.jpg"
           className="max-w-sm rounded-lg shadow-2xl"
         />
         <div>

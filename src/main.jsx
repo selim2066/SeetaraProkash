@@ -7,36 +7,35 @@ import Root from "./Root/Root.jsx";
 import Error from "./Components/Error/Error.jsx";
 import Home from "./Components/Home/Home.jsx";
 import ListedBooks from "./Components/ListedBooks/ListedBooks.jsx";
-import PagesToRead from "./Components/PageToRead/PagesToRead.jsx"
+import PagesToRead from "./Components/PageToRead/PagesToRead.jsx";
 import BookDetails from "./Components/Books/BookDetails.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<Error></Error>,
+    errorElement: <Error></Error>,
     children: [
       {
-        path:'/',
-        element:<Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path:'books/:bookId',
-        element:<BookDetails></BookDetails>,
-        loader: ()=>fetch('/public/booksData.json')
+        path: "books/:bookId",
+        element: <BookDetails></BookDetails>,
+        loader: () => fetch("/booksData.json"),
       },
       {
-        path:"listedBooks",
-        element:<ListedBooks></ListedBooks>,
-        loader: ()=>fetch('/booksData.json')
+        path: "listedBooks",
+        element: <ListedBooks></ListedBooks>,
+        loader: () => fetch("/booksData.json"),
       },
       {
-        path:"pToRead",
-        element: <PagesToRead></PagesToRead>
-      }
-    ]
+        path: "pToRead",
+        element: <PagesToRead></PagesToRead>,
+      },
+    ],
   },
- 
 ]);
 
 createRoot(document.getElementById("root")).render(

@@ -43,13 +43,13 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Seetara Prokash</a>
+        <a className="btn btn-ghost text-2xl bg-sky-500">Seetara Prokash</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <a className="btn bg-amber-500">Sign In</a>
       </div>
     </div>
   );
