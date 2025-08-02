@@ -1,5 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import { addToStoreReadList } from "../../localDB";
+import { addToStoreReadList, addToWishlist } from "../../localDB";
 
 const BookDetails = () => {
   const { bookId } = useParams();
@@ -22,6 +22,10 @@ const BookDetails = () => {
 
   const handleMarkRead = (id)=>{
      addToStoreReadList(id)
+  }
+
+  const handleWishlist = (id)=>{
+    addToWishlist(id)
   }
 
   return (
@@ -72,7 +76,7 @@ const BookDetails = () => {
         {/* button */}
         <div className="card-actions justify-start mt-5">
           <button onClick={()=>handleMarkRead(bookId)} className="btn bg-white text-black">Mark as Read</button>
-          <button className="btn btn-primary">Wishlist</button>
+          <button className="btn btn-primary" onClick={()=>handleWishlist(bookId)}>Wishlist</button>
         </div>
       </div>
     </div>
